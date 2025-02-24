@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <main.h>
 /**
 * @c: character to check
 *
@@ -6,11 +6,9 @@
 *
 * Return: gives 1 or 0
 */
-int main(void)
-
 int _isupper(int c);
 {
-	if (c >= 'a' && c <='z')
+	if (c >= 'A' && c <='Z')
 	{
 		return (1);
 	}
