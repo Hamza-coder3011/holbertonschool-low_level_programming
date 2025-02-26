@@ -33,12 +33,10 @@ int _atoi(char *s)
 	}
 
 	else if (started)
-	{
+
 		break;
-	}
 
 	s++;
 	}
-
 	return (num * sign);
 }
