@@ -25,17 +25,14 @@ int _atoi(char *s)
 		else
 			break;
 	}
-
 	else if (*s >= '0' && *s <= '9')
 	{
-		num = num * 10 + (*s - '0');
 		started = 1;
+		num = num * 10 + (*s - '0');
 	}
-
 	else if (started)
 
 		break;
-
 	s++;
 	}
 	return (num * sign);
