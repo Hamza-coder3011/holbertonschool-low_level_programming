@@ -10,27 +10,29 @@ int _atoi(char *s)
 {
 	int sign = 1;
 	int num = 0;
-	int found_digit = 0;
+	int started = 0;
 
 	while (*s)
 	{
 
 	if (*s == '-' || *s == '+')
 	{
-		if (!found_digit)
+		if (!started)
 		{
 			if (*s == '-')
 			sign *= -1;
 		}
+		else
+			break;
 	}
 
 	else if (*s >= '0' && *s <= '9')
 	{
 		num = num * 10 + (*s - '0');
-		found_digit = 1;
+		started = 1;
 	}
 
-	else if (found_digit)
+	else if (started)
 	{
 		break;
 	}
