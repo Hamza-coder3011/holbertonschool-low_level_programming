@@ -8,26 +8,34 @@
 */
 int _atoi(char *s)
 {
-	int sign = 1, num = 0;
+	int sign = 1;
+	int num = 0;
+	int found_digit = 0;
 
-	while (*s && (*s < '0' || *s > '9') && *s != '-' && *s != '+')
+	while (*s)
 	{
-		s++;
-	}
 
-	while (*s == '-' || *s == '+')
+	if (*s == '-' || *s == '+')
 	{
-		if (*s == '-')
+		if (!found_digit)
 		{
+			if (*s == '-')
 			sign *= -1;
 		}
-		s++;
 	}
 
-	while (*s >= '0' && *s <= '9')
+	else if (*s >= '0' && *s <= '9')
 	{
 		num = num * 10 + (*s - '0');
-		s++;
+		found_digit = 1;
+	}
+
+	else if (found_digit)
+	{
+		break;
+	}
+
+	s++;
 	}
 
 	return (num * sign);
