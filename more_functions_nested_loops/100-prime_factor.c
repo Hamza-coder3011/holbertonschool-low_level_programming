@@ -20,7 +20,7 @@ long largest_prime_factor(long n)
 			factor++;
 		}
 	}
-	return n;
+	return (n);
 }
 
 /**
