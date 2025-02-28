@@ -3,7 +3,7 @@
 * print_number - Prints an integer unsing only _putchar
 * @n: The integer to print
 */
-void print_number(unsigned int n)
+void print_number(int n)
 {
 	if (n < 0)
 	{
