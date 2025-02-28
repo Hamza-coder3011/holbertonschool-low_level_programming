@@ -1,10 +1,17 @@
 #include "main.h"
+#include <limits.h>
 /**
 * print_number - Prints an integer unsing only _putchar
 * @n: The integer to print
 */
 void print_number(int n)
 {
+	if (n == INT_MIN)
+	{
+		_putchar('-');
+		_putchar('2');
+		n = 147483648;
+	}
 	if (n < 0)
 	{
 		_putchar('-');
