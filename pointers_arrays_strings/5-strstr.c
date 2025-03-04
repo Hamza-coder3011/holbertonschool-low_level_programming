@@ -9,23 +9,26 @@
 */
 char *_strstr(char *haystack, char *needle)
 {
-	int *h, *n;
 
 	if (*needle == '\0')
+	{
 	return (haystack);
+	}
 
 	while (*haystack)
 	{
-		h = haystack;
-		n = needle;
+		char *h = haystack;
+		char *n = needle;
 
-		while (*h && *n (*h == *n))
+		while (*h && *n && (*h == *n))
 		{
 			h++;
 			n++;
 		}
 		if (*n == '\0')
+		{
 		return (haystack);
+		}
 
 		haystack++;
 	}
