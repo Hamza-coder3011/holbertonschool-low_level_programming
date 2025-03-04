@@ -4,6 +4,9 @@
 /**
 * main - Adds positive numbers passed as arguments
 *
+* @argc: The number of command line arguments
+* @argv: An array of strings representing the command line arguments
+*
 * Return: 0 if successful, 1 if error
 */
 int main(int argc, char *argv[])
