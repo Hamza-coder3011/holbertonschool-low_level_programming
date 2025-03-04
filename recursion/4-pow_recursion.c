@@ -6,9 +6,9 @@
 * @y: The exponent
 *
 * Return: The value of x raised to the power of y. 
-* Returns -1 if y is negative.
+*returns -1 if y is negative.
 */
-int _pow_recursion(int x , int y)
+int _pow_recursion(int x, int y)
 {
 	if (y == 0)
 	{
@@ -20,5 +20,5 @@ int _pow_recursion(int x , int y)
 		return (-1);
 	}
 
-	return x * _pow_recursion(x, y - 1);
+	return (x * _pow_recursion(x, y - 1));
 }
