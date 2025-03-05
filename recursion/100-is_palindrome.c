@@ -1,57 +1,60 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
+#include "main.h"
+
 /**
-* clean_string - Removes non-alphanumeric characters and converts to lowercase
-* @s: The original string
-* @cleaned: The buffer to store the cleaned string
-*
-* Return: The length of cleaned string
-*/
-int clean_string(char *s, char *cleaned)
+ * check_length - check the length of the string
+ * @s: String to check
+ * Return: int string length
+ */
+
+int check_length(char *s)
 {
-	int i, j = 0;
 
-	for (i = 0; s[i] != '\0'; i++)
+	if (*s == '\0')
 	{
-		if (isalnum(s[i]))
-		{
-			cleaned[j++] = tolower(s[i]);
-		}
+		return (0);
 	}
-	cleaned[j] = '\0';
-
-	return (j);
+	else
+	{
+		return (1 + check_length(s + 1));
+	}
 }
 
 /**
-* is_palindrome - Checks if a string is a palindrome, ignoring spaces and case.
-* @s: The input string
-*
-* Return: 1 if palindrome, 0 otherwise
-*/
+ * palindrome_helper - helper function to is_palindrome
+ * @s: String of palindrome
+ * @start: Beginning of the string
+ * @end: End of the string
+ * Return: int
+ */
+
+int palindrome_helper(char *s, int start, int end)
+{
+	if (start >= end)
+	{
+		return (1);
+	}
+	if (s[start] != s[end])
+	{
+		return (0);
+	}
+
+	return (palindrome_helper(s, start + 1, end - 1));
+}
+
+/**
+ * is_palindrome - check if a string is a palindrome
+ * @s: String to check
+ * Return: 1 if palindrome, 0 if not
+ */
+
 int is_palindrome(char *s)
 {
-	char cleaned[1000];
-	int len = clean_string(s, cleaned);
-	int left, right;
+	int len = check_length(s);
 
 	if (len == 0)
 	{
 		return (1);
 	}
 
-	left = 0;
-	right = len - 1;
-
-	while (left < right)
-	{
-		if (cleaned[left] != cleaned[right])
-			return (0);
-
-		left++;
-		right--;
-	}
-	return (1);
+	return (palindrome_helper(s, 0, len - 1));
 }
