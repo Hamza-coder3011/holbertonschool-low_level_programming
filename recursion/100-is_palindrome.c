@@ -49,7 +49,7 @@ int is_palindrome_recursive(char *s, int left, int right)
 */
 int is_palindrome(char *s)
 {
-	char cleaned[1000];
+	char cleaned[100];
 	int len = clean_string(s, cleaned);
 
 	if (len == 0)
