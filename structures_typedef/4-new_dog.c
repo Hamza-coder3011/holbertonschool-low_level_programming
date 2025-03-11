@@ -1,56 +1,69 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "main.h"
 #include "dog.h"
+#include <stdlib.h>
 
 /**
-* new_dog - creates a new dog
-* @name: Name of the dog.
-* @age: Age of the dog.
-* @owner: Owner of the dog
-*
-* Return: a pointer to the new dog, or NULL if it fails
-*/
-dog_t *new_dog(char *name, float age, char *owner)
+ * str_len - calculate the length of a string
+ * @str: the string to calculate
+ * Return: the length of the string
+ */
+
+unsigned int str_len(char *str)
 {
-	dog_t *d;
+	unsigned int len = 0;
 
-	d = malloc(sizeof(dog_t));
-	if (d == NULL)
-		return (NULL);
-
-	d->name = malloc(sizeof(char) * (strlen(name) + 1));
-	if (d->name == NULL)
+	while (str[len] != '\0')
 	{
-		free(d);
-		return (NULL);
+		len++;
 	}
-	strcpy(d->name, name);
 
-	d->age = age;
-
-	d->owner = malloc(sizeof(char) * (strlen(owner) + 1));
-	if (d->owner == NULL)
-	{
-		free(d->name);
-		free(d);
-		return (NULL);
-	}
-	strcpy(d->owner, owner);
-
-	return (d);
+	return (len);
 }
 
 /**
-* free_dog - frees the memory allocated for a dog
-* @d: the dog to free
-*/
-void free_dog(dog_t *d)
+ * new_dog - create a new dog
+ * @name: name of the dog
+ * @age: age of the dog
+ * @owner: owner of the dog
+ * Return: a dog
+ */
+
+dog_t *new_dog(char *name, float age, char *owner)
 {
-	if (d != NULL)
+	dog_t *dog;
+	unsigned int i;
+
+	dog = (dog_t *)malloc(sizeof(dog_t));
+	if (dog == NULL)
 	{
-		free(d->name);
-		free(d->owner);
-		free(d);
+		return (NULL);
 	}
+
+	dog->name = (char *)malloc(str_len(name) + 1);
+	if (dog->name == NULL)
+	{
+		free(dog);
+		return (NULL);
+	}
+
+	dog->owner = (char *)malloc(str_len(owner) + 1);
+	if (dog->owner == NULL)
+	{
+		free(dog->name);
+		free(dog);
+		return (NULL);
+	}
+
+	for (i = 0; i <= str_len(name); i++)
+	{
+		dog->name[i] = name[i];
+	}
+	for (i = 0; i <= str_len(owner); i++)
+	{
+		dog->owner[i] = owner[i];
+	}
+
+	dog->age = age;
+
+	return (dog);
 }
