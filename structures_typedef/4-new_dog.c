@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include "dog.h"
 
 /**
 * struct dog - structure representing a dog
@@ -73,7 +73,9 @@ dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *d = malloc(sizeof(dog_t));
 	if (d == NULL)
+	{
 		return (NULL);
+	}
 
 	d->name = _strdup(name);
 	if (d->name == NULL)
