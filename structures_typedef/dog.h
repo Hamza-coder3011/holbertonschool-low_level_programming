@@ -2,8 +2,6 @@
 #define DOG_H
 
 
-#include <stdio.h>
-
 /**
 * struct dog - Represents a dog with basic information.
 * @name: The dog's name.
