@@ -1,11 +1,18 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include <sys/stat.h>
+#include <errno.h>
+
+#define BUFFER_SIZE 1024
 
 /**
-* close_file - closes a file descriptor and handles errors.
-* @fd: the file descriptor to close.
+* main - Copies the content of a file to another file
+* @argc: Argument count
+* @argv: Argument vector
+*
+* Return: 0 on success, or exits with the appropriate code on failure
 */
 void close_file(int fd)
 {
@@ -38,7 +45,7 @@ int main(int argc, char *argv[])
 	fd_from = open(argv[1], O_RDONLY);
 	if (fd_from == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read from to %s\n", argv[1]);
 		exit(98);
 	}
 
